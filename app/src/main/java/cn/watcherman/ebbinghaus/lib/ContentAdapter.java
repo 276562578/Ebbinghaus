@@ -26,7 +26,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
     public ContentViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         Context context = viewGroup.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.content_list, viewGroup, false);
+        View view = inflater.inflate(R.layout.content_list_element, viewGroup, false);
         ContentViewHolder viewHolder = new ContentViewHolder(view);
         return viewHolder;
     }

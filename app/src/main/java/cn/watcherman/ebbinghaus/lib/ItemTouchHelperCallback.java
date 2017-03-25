@@ -1,8 +1,8 @@
 package cn.watcherman.ebbinghaus.lib;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import cn.watcherman.ebbinghaus.MainActivity;
 import cn.watcherman.ebbinghaus.data.InterfaceDatabase;
 import java.text.ParseException;
 
@@ -11,7 +11,9 @@ import java.text.ParseException;
  */
 public class ItemTouchHelperCallback extends ItemTouchHelper.Callback{
     ContentAdapter adapter;
-    public ItemTouchHelperCallback (ContentAdapter mAdapter){
+    Context context;
+    public ItemTouchHelperCallback (Context these,ContentAdapter mAdapter){
+        context = these;
         adapter = mAdapter;
     }
 
@@ -30,11 +32,11 @@ public class ItemTouchHelperCallback extends ItemTouchHelper.Callback{
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
         int position = viewHolder.getAdapterPosition();
         String _id = adapter.list.get(position)[0];
-//        try {
-//            boolean result =  new InterfaceDatabase("w").markHaveDone(_id);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            boolean result =  new InterfaceDatabase(context,"w").markHaveDone(_id);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         adapter.list.remove(position);
         adapter.notifyItemRemoved(position);
 

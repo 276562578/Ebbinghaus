@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         contentAdapter = new ContentAdapter(list);
         recyclerView.setAdapter(contentAdapter);
         //添加滑动删除处理
-        itemTouchHelper = new ItemTouchHelper(new ItemTouchHelperCallback(contentAdapter));
+        itemTouchHelper = new ItemTouchHelper(new ItemTouchHelperCallback(this,contentAdapter));
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
