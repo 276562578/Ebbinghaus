@@ -15,6 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".data.ListAllActivity">
+        </activity>
+        <activity android:name=".ListAllActivity">
+        </activity>
     </application>
 
 </manifest>

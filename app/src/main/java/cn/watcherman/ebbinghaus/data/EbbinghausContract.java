@@ -21,7 +21,7 @@ public final class EbbinghausContract {
         public static final String COLUMN_CONTENT = "content";
         public static final String COLUMN_SET_DATE = "set_date";
         public static final String COLUMN_EXEC_TIMES = "exec_times";
-        public static final String COLUMN_NEXT_TIMES_DATE = "next_time_date";
+        public static final String COLUMN_NEXT_TIMES_DATE = "next_times_date";
 
 
     }

@@ -1,5 +1,6 @@
 package cn.watcherman.ebbinghaus;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
         setRecyclerView();
         SharedPreferences.Editor ebbinghausMemoryDay = getSharedPreferences(getString(R.string.ebbinghausMemoryDay_kel_file), MODE_PRIVATE).edit();
         ebbinghausMemoryDay.putInt("1",1);
+        ebbinghausMemoryDay.putInt("2",2);
+        ebbinghausMemoryDay.putInt("3",3);
+        ebbinghausMemoryDay.putInt("4",8);
+        ebbinghausMemoryDay.putInt("5",15);
+        ebbinghausMemoryDay.putInt("6",30);
+        ebbinghausMemoryDay.putInt("7",60);
+        ebbinghausMemoryDay.putInt("8",120);
         ebbinghausMemoryDay.apply();
     }
 
@@ -35,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-        List<String[]> list = database.getList();
+        List<String[]> list = database.getList("no");
         contentAdapter = new ContentAdapter(list);
         recyclerView.setAdapter(contentAdapter);
         //添加滑动删除处理
@@ -60,5 +68,10 @@ public class MainActivity extends AppCompatActivity {
                 addNewRecord(view);
             }
         }
+    }
+
+    public void checkAllRecord(View view){
+        Intent intent = new Intent(this,ListAllActivity.class);
+        startActivity(intent);
     }
 }

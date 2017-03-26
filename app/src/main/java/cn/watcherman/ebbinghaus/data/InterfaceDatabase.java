@@ -33,26 +33,42 @@ public class InterfaceDatabase {
         }
     }
 
-    public List<String[]> getList() {
+    public List<String[]> getList(String all) {
         List<String[]> list = new ArrayList<>();
         String[] listAll;
+        Cursor cursor;
 
-        String selection = contentEntry.COLUMN_NEXT_TIMES_DATE + " = ?";
-        String next_time_date = simpleDateFormat.format(calendar.getTime());
-        String[] selectionArgs = {next_time_date};
-        Cursor cursor = db.query(EbbinghausContract.contentEntry.TABLE_NAME,
-                null, selection, selectionArgs, null, null, null);
+        if(all.equals("all")){
+            cursor = db.query(EbbinghausContract.contentEntry.TABLE_NAME,
+                    null, null, null, null, null, null);
+        }
+        else {
+            String selection = contentEntry.COLUMN_NEXT_TIMES_DATE + " = ?";
+            String next_time_date = simpleDateFormat.format(calendar.getTime());
+            String[] selectionArgs = {next_time_date};
+            cursor = db.query(EbbinghausContract.contentEntry.TABLE_NAME,
+                    null, selection, selectionArgs, null, null, null);
+        }
+
+
         int contentId = cursor.getColumnIndex(contentEntry.COLUMN_CONTENT),
                 _IdId = cursor.getColumnIndex(contentEntry._ID),
-                exec_timesId = cursor.getColumnIndex(contentEntry.COLUMN_EXEC_TIMES);
-        for (String _id, content, exec_times; cursor.moveToNext(); list.add(listAll)) {
-            listAll = new String[3];
+                exec_timesId = cursor.getColumnIndex(contentEntry.COLUMN_EXEC_TIMES),
+                set_dateId = cursor.getColumnIndex(contentEntry.COLUMN_SET_DATE),
+                next_timeId = cursor.getColumnIndex(contentEntry.COLUMN_NEXT_TIMES_DATE);
+
+        for (String _id, content, exec_times,set_date,next_time; cursor.moveToNext(); list.add(listAll)) {
+            listAll = new String[5];
             _id = cursor.getString(_IdId);
             listAll[0] = _id;
             content = cursor.getString(contentId);
             listAll[1] = content;
             exec_times = cursor.getString(exec_timesId);
             listAll[2] = exec_times;
+            set_date = cursor.getString(set_dateId);
+            listAll[3] = set_date;
+            next_time = cursor.getString(next_timeId);
+            listAll[4] = next_time;
         }
         return list;
 

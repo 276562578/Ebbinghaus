@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
     <android.support.v7.widget.RecyclerView
             android:id="@+id/content_recyclerview"
             android:layout_width="match_parent"
@@ -13,31 +14,44 @@
             android:layout_weight="1">
 
     </android.support.v7.widget.RecyclerView>
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:background="#c8e6c9"
-                  android:layout_margin="8dp"
-                  android:padding="4dp"
-                  android:orientation="horizontal">
-        <TextView android:id="@+id/content_warn"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginLeft="4dp"
-                  android:layout_marginStart="4dp"
-                  android:text="@string/content"
-                  android:textSize="16sp"/>
-        <EditText android:id="@+id/content_input"
-                  android:layout_width="0dp"
-                  android:layout_weight="1"
-                  android:layout_height="wrap_content"
-                  android:hint="@string/please_input_your_content"
-                  android:textSize="14sp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#c8e6c9"
+            android:layout_margin="8dp"
+            android:padding="4dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:id="@+id/content_warn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:text="@string/content"
+                android:textSize="16sp"/>
+
+        <EditText
+                android:id="@+id/content_input"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="@string/please_input_your_content"
+                android:textSize="14sp"/>
     </LinearLayout>
-    <Button android:layout_width="match_parent"
+
+    <Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_new_record"
-            android:layout_marginBottom="8dp"
             android:onClick="addNewRecord"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/check_all_record"
+            android:onClick="checkAllRecord"/>
 
 </LinearLayout>
 
